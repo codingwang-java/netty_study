@@ -3,7 +3,7 @@ import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.io.IOException;
 
-public class fileClear {
+public class FileClear {
     public static void clearFiles(String path) throws IOException {
         File file = new File(path);
         for(File f:file.listFiles()){

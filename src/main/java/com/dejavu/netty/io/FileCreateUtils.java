@@ -5,7 +5,7 @@ import com.sun.source.tree.SwitchTree;
 import java.io.*;
 import java.util.Scanner;
 
-public class fileCreateUtils {
+public class FileCreateUtils {
     static String filePath = System.getProperty("user.dir")+"\\src\\main\\resources\\files\\";
     public static void createFile(){
         InputStream inputStream;

@@ -1,4 +1,4 @@
-package com.dejavu.netty.netty.nio.timeServer;
+package com.dejavu.netty.netty.nio.pack.msgpack.server;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -8,27 +8,27 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 /**
- * 类描述：
- *
- * @ClassName TimeServer
- * @Description TODO
- * @Author DEJAVU
- * @Date 2021/4/11 16:19
- * @Version 1.0
+ * @author dejavu
+ * @description
+ * @create 2021-05-01 15:15
  */
-public class TimeServer {
+public class EchoServer {
     public void bind(int port) throws InterruptedException {
-        EventLoopGroup bossGroup = new NioEventLoopGroup();
+        EventLoopGroup bossGroup   = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
+
         try {
             ServerBootstrap b = new ServerBootstrap();
+
             b.group(bossGroup, workerGroup)
-                    .channel(NioServerSocketChannel.class)
-                    .option(ChannelOption.SO_BACKLOG,1024)
-                    .childHandler(new ChildChannelhandler());
+             .channel(NioServerSocketChannel.class)
+             .option(ChannelOption.SO_BACKLOG, 100)
+             .childHandler(new ChildHandler());
+
             ChannelFuture f = b.bind(port).sync();
+
             f.channel().closeFuture().sync();
-        }finally {
+        } finally {
             workerGroup.shutdownGracefully();
             bossGroup.shutdownGracefully();
         }
@@ -36,10 +36,14 @@ public class TimeServer {
 
     public static void main(String[] args) {
         int port = 9527;
+
         try {
-            new TimeServer().bind(port);
+            new EchoServer().bind(port);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 }
+
+
+//~ Formatted by Jindent --- http://www.jindent.com

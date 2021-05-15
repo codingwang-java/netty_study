@@ -1,11 +1,10 @@
-package com.dejavu.netty.netty.nio.timeServer;
+package com.dejavu.netty.netty.nio.common.timeServer;
 
-import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
 
 /**
- * 类描述：
+ * ��������
  *
  * @ClassName ChildChannelhandler
  * @Description TODO
@@ -17,5 +16,11 @@ public class ChildChannelhandler extends ChannelInitializer<SocketChannel> {
     @Override
     protected void initChannel(SocketChannel socketChannel) throws Exception {
         socketChannel.pipeline().addLast(new TimeServerHandler());
+
+        // socketChannel.pipeline().addLast(new LineBasedFrameDecoder(1024));
+        // socketChannel.pipeline().addLast(new StringDecoder());
     }
 }
+
+
+//~ Formatted by Jindent --- http://www.jindent.com

@@ -1,7 +1,5 @@
 package com.dejavu.netty.io;
 
-import com.sun.source.tree.SwitchTree;
-
 import java.io.*;
 import java.util.Scanner;
 
